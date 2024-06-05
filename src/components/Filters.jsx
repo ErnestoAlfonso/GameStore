@@ -42,8 +42,8 @@ export function Filters () {
         <label htmlFor={categoryFilterId}>Categoría</label>
         <select id={categoryFilterId} onChange={handleChangeCategory}>
           <option value='all'>Todas</option>
-          <option value='laptops'>Portátiles</option>
-          <option value='smartphones'>Celulares</option>
+          <option value='Action'>Portátiles</option>
+          <option value='RPG'>Celulares</option>
         </select>
       </div>
 

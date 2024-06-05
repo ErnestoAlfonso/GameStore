@@ -2,7 +2,7 @@ import './Products.css'
 import { AddToCartIcon, RemoveFromCartIcon } from './Icons.jsx'
 import { useCart } from '../hooks/useCart.js'
 
-export function Products ({ products }) {
+export function Products ( {products} ) {
   const { addToCart, removeFromCart, cart } = useCart()
 
   const checkProductInCart = product => {
@@ -18,11 +18,11 @@ export function Products ({ products }) {
           return (
             <li key={product.id}>
               <img
-                src={product.thumbnail}
-                alt={product.title}
+                src={product['background_image']}
+                alt={product['name']}
               />
               <div>
-                <strong>{product.title}</strong> - ${product.price}
+                <strong>{product['name']}</strong> - ${product['id']}
               </div>
               <div>
                 <button

@@ -1,5 +1,6 @@
 // import { useEffect, useState } from "react";
-import { GameList } from "../../components/GameList/GameList";
+// import { GameList } from "../../components/GameList/GameList";
+import '../../components/GameList/GameList.css';
 import { useGame } from "../../hooks/useGameF";
 import { Link } from "react-router-dom";
 
