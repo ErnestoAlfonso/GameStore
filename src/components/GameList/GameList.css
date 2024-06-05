@@ -1,0 +1,19 @@
+ul {
+    width: 85%;
+    list-style-type:disc;
+}
+
+li {
+    line-height: calc(100vw - 97vw);
+    border: 1px;
+    border-color: rgb(150, 218, 255);
+    border-style: solid;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+
+.linkGame {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    padding-left: 15px;
+}
