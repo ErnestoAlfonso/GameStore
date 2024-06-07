@@ -20,7 +20,8 @@
 .products li {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content:space-between;
+  /* gap: 1rem; */
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
   border-radius: 4px;
   background: #111;
@@ -44,4 +45,20 @@
   display: block;
   object-fit: cover;
   background: #fff;
+}
+
+.products .divCard{
+  display: flex;
+  flex-direction: column;
+}
+
+.products button{
+  position: relative;
+  bottom: 0%;
+  top: 100%;
+}
+
+.products .divButCard{
+  position: relative;
+  bottom: 0%;
 }

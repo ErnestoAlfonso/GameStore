@@ -21,24 +21,28 @@ export function Products ( {products} ) {
                 src={product['background_image']}
                 alt={product['name']}
               />
-              <div>
-                <strong>{product['name']}</strong> - ${product['id']}
+              <div className='divCard'>
+                <strong>{product['name']}</strong>
+                <strong>${product['id']}</strong>
               </div>
-              <div>
+              <section>
+
+              <div className='divButCard'>
                 <button
                   style={{ backgroundColor: isProductInCart ? 'red' : '#09f' }} onClick={() => {
                     isProductInCart
-                      ? removeFromCart(product)
-                      : addToCart(product)
-                  }}
-                >
+                    ? removeFromCart(product)
+                    : addToCart(product)
+                    }}
+                    >
                   {
                     isProductInCart
-                      ? <RemoveFromCartIcon />
-                      : <AddToCartIcon />
-                  }
+                    ? <RemoveFromCartIcon />
+                    : <AddToCartIcon />
+                    }
                 </button>
               </div>
+                  </section>
             </li>
           )
         })}
