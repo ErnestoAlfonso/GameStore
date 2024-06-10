@@ -2,23 +2,23 @@ AZUREPAT=$AZUREPAT
 AZUSERNAME=$AZUSERNAME
 AZUSER_EMAIL=$AZUSER_EMAIL
 AZORG=$AZORG
-git clone https://github.com/ErnestoAlfonso/GameStore
-cd GameStore
-rm -rf .git
 
-cd ..
+# Remove Git information (for fresh git start)
+rm -rf Brain-Squeezes/.git
 
-GIT_CMD_REPOSITORY="https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Prueba1/_git/Prueba1"
-git clone $GIT_CMD_REPOSITORY
+# Fetch the changes from Azure DevOps to ensure we have latest
+git fetch --unshallow
 
-cp -r Prueba1/* Prueba1/
+# Pull changes from Azure DevOps if its exiting branch and have commits on it
+git pull https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Prueba1/_git/Prueba1.git
 
-cd Prueba1
+#git checkout -b $github_to_azure_sync
 
+# Set Git user identity
 git config --global user.email "$AZUSER_EMAIL"
 git config --global user.name "$AZUSERNAME"
 
+# Add all changes into stage, commit, and push to Azure DevOps
 git add .
-git commit -m "sync from git to azure"
-
-git push
+git commit -m "Sync from GitHub to Azure DevOps"
+git push --force https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Prueba1/_git/Prueba1.git
