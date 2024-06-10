@@ -1,40 +1,18 @@
-name: Sync From Git To Azure
-
-on: 
-  push:
-    branches: [master]
-    
+name: Push directory to another repository
+on: push
 jobs:
-  sync_from_git_to_azure:
+  check-bats-version:
     runs-on: ubuntu-latest
+    environment: AzurePAT
     steps:
     - uses: actions/checkout@v2
-    - name: Setup environment variables
+    - name: Run script file
+      env:
+        AZUREPAT: ${{secrets.AZUREPAT}}
+        AZUSERNAME: ${{secrets.AZUSERNAME}}
+        AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
+        AZORG: ${{secrets.AZORG}}
       run: |
-        echo ::set-env name=AZUREPAT::${{ secrets.AZUREPAT }}
-        echo ::set-env name=AZUSERNAME::${{ secrets.AZUSERNAME }}
-        echo ::set-env name=AZUSER_EMAIL::${{ secrets.AZUSER_EMAIL }}
-        echo ::set-env name=AZORG::${{ secrets.AZORG }}
-    - name: Git clone repo
-      run: |
-        git clone https://link-to-your-repo
-        cd reponame
-        rm -rf .git
-    - name: Clone to Azure DevOps Repo
-      run: |
-        cd ..
-        GIT_CMD_REPOSITORY="https://dev.azure.com/ernealfonso00/_git/Prueba1" 
-        git clone $GIT_CMD_REPOSITORY
-    - name: Copy files from git repro to azure repro
-      run: |
-        cp -r Prueba1/* Prueba1/
-    - name: Configure user in azure repro
-      run: |
-        cd TestGitSync
-        git config --global user.email "$AZUSER_EMAIL"
-        git config --global user.name "$AZUSERNAME"
-    - name: Commit and Push to azure
-      run: |
-        git add .
-        git commit -m "sync from git to azure"
-        git push
+         chmod +x ./commit.sh
+         ./commit.sh
+      shell: bash
