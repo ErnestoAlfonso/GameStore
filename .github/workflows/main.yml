@@ -1,17 +1,18 @@
-name: CI
-
-on:
-  push:
-    branches: [ "main" ]
-
+name: Push directory to another repository
+on: push
 jobs:
-
-  build:
+  check-bats-version:
     runs-on: ubuntu-latest
-    
+    environment: AzurePAT
     steps:
-    - uses: actions/checkout@v3
-    - name: Run commit.sh script
+    - uses: actions/checkout@v2
+    - name: Run script file
+      env:
+        AZUREPAT: ${{secrets.AZUREPAT}}
+        AZUSERNAME: ${{secrets.AZUSERNAME}}
+        AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
+        AZORG: ${{secrets.AZORG}}
       run: |
-        chmod +x commit.sh
-        ./commit.sh
+         chmod +x ./commit.sh
+         ./commit.sh
+      shell: bash
