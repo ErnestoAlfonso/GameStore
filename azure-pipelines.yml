@@ -1,21 +1,26 @@
 trigger:
   - main
 
-jobs:
-- job: PushToAzureDevOps
-  pool:
-    vmImage: 'ubuntu-latest'
-  
-  steps:
-  - task: Git@v2
-    inputs:
-      repository: 'https://github.com/your-github-username/https://github.com/ErnestoAlfonso/GameStore.git'
-      branch: 'main'
-      
-  - task: AzureDevOpsGit@1
-    inputs:
-      connectedServiceName: 'your-azure-devops-connection'
-      repository: 'https://dev.azure.com/your-azure-devops-org/Prueba1/_git/Prueba1'
-      branch: 'main'
-      pushChanges: true
-      tagSource: 'auto'
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Clone the GitHub repository
+      git clone https://github.com/your-github-username/your-github-repo.git
+
+      # Change directory to the cloned repo
+      Push-Location your-github-repo
+
+      # Push the changes to the Azure DevOps repository
+      az repos push --repository https://dev.azure.com/your-azure-devops-org/your-azure-devops-project/_git/your-azure-devops-repo --branch main
+    pwsh: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.SourcesDirectory)'
+    artifactName: 'drop'
+    publishLocation: 'Container'
