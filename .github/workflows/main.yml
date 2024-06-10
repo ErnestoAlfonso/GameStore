@@ -1,18 +1,18 @@
-name: Push directory to another repository
-on: push
+name: Mirror to Azure DevOps
+
+on:
+  push:
+    branches: [main]
+
 jobs:
-  check-bats-version:
+  mirror:
     runs-on: ubuntu-latest
-    environment: secrets
     steps:
     - uses: actions/checkout@v2
-    - name: Run script file
+
+    - name: Mirror to Azure DevOps
       env:
-        AZUREPAT: ${{secrets.AZUREPAT}}
-        AZUSERNAME: ${{secrets.AZUSERNAME}}
-        AZUSER_EMAIL: ${{secrets.AZUSER_EMAIL}}
-        AZORG: ${{secrets.AZORG}}
+        AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
       run: |
-         chmod +x ./commit.sh
-         ./commit.sh
+        git push azure main
       shell: bash
