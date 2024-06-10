@@ -12,7 +12,7 @@ jobs:
 
     - name: Mirror to Azure DevOps
       env:
-        AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+        AZURE_DEVOPS_TOKEN: ${{ secrets.AZUREPAT }}
       run: |
         git push azure main
       shell: bash
