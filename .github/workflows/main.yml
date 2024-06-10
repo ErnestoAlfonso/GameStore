@@ -23,11 +23,11 @@ jobs:
     - name: Clone to Azure DevOps Repo
       run: |
         cd ..
-        GIT_CMD_REPOSITORY="https://azure-repo-url" 
+        GIT_CMD_REPOSITORY="https://dev.azure.com/ernealfonso00/_git/Prueba1" 
         git clone $GIT_CMD_REPOSITORY
     - name: Copy files from git repro to azure repro
       run: |
-        cp -r testAzureDevops/* TestGitSync/
+        cp -r Prueba1/* Prueba1/
     - name: Configure user in azure repro
       run: |
         cd TestGitSync
