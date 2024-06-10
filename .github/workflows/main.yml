@@ -14,5 +14,5 @@ jobs:
       env:
         AZURE_DEVOPS_TOKEN: ${{ secrets.AZUREPAT }}
       run: |
-        git push azure main
+        git push Prueba1 main
       shell: bash
