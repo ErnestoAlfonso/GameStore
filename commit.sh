@@ -2,18 +2,18 @@ AZUREPAT=$AZUREPAT
 AZUSERNAME=$AZUSERNAME
 AZUSER_EMAIL=$AZUSER_EMAIL
 AZORG=$AZORG
-git clone https://github.com/harishlalwani/testAzureDevops
-cd testAzureDevops
+git clone https://github.com/ErnestoAlfonso/GameStore
+cd GameStore
 rm -rf .git
 
 cd ..
 
-GIT_CMD_REPOSITORY="https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/TestGitSync/_git/TestGitSync"
+GIT_CMD_REPOSITORY="https://dev.azure.com/$AZURENAME/Space%20Game%20-%20Web/_git/GameStorenew"
 git clone $GIT_CMD_REPOSITORY
 
-cp -r testAzureDevops/* TestGitSync/
+cp -r Space%20Game%20-%20Web/* GameStorenew/
 
-cd TestGitSync
+cd GameStorenew
 
 git config --global user.email "$AZUSER_EMAIL"
 git config --global user.name "$AZUSERNAME"
