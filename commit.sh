@@ -8,10 +8,10 @@ rm -rf .git
 
 cd ..
 
-GIT_CMD_REPOSITORY="https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Space%20Game%20-%20Web/_git/GameStorenew"
+GIT_CMD_REPOSITORY="https://$AZUSERNAME:$AZUREPAT@dev.azure.com/$AZORG/Prueba1/_git/Prueba1"
 git clone $GIT_CMD_REPOSITORY
 
-cp -r Space Game - Web/* GameStorenew/
+cp -r Prueba1/* GameStorenew/
 
 cd GameStorenew
 
